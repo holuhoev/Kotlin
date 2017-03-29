@@ -15,13 +15,25 @@ import java.util.*
 пример результата(для приведенных выше входных данных): [[0],[1,3,4],[5]]
  */
 
-fun main(args: Array<String>) {
+fun main(args: Array<String>)
+{
     val list = listOf(1, 2, 3, 2, 2, 4, 6)
-    val set= setOf(1, 2, 4)
+    val set = setOf(1, 2, 4)
 
     val res = mutableListOf<MutableList<Int>>()
 
+    for (i in 0..set.size - 1)
+        res.add(mutableListOf<Int>())
+
+    for (i in 0..list.size - 1)
+        if (set.contains(list[i])) res[set.indexOf(list[i])].add(i)
 
 
+    res.forEach {
+        it.forEach {
+            print("$it ")
+        }
+        println()
+    }
 
 }
