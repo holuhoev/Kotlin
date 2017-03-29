@@ -8,30 +8,33 @@ package HW_3
 заканчивающуюся символом под номером b.
  */
 
-fun getInt(varName : String) : Int {
 
-    while (true) {
-        try {
-            print("Введите $varName: ")
-            val result = readLine()!!.toInt()
-            if (result > -1)
-                return result
-            else
-                throw Exception()
-        } catch (e: Exception) {
-            println("Неверный ввод!")
-        }
-    }
-}
 fun main(args: Array<String>) {
     println("Введите строку:")
     val s: String = readLine()!!
 
-    val a: Int  = getInt("a")
-    val b: Int = getInt("b")
+    try
+    {
 
-    if (a >= b)
-        throw Exception()
+        val a: Int = getInt("a")
+        val b: Int = getInt("b")
 
-    println(s.substring(a,b))
+        println(s.substring(a,b))
+
+        if (a >= b)
+            throw Exception("Неверный формат")
+    }
+    catch (e:Exception)
+    {
+        println("Error: ${e.message}")
+    }
+}
+
+fun getInt(name:String):Int{
+    println("Введите $name")
+    val result = readLine()!!.toInt()
+
+    if(result < 0)
+        throw Exception("Введите число")
+    return result
 }
